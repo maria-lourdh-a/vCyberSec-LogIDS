@@ -23,7 +23,7 @@ python log_ids.py
 
 ## Sample Output
 
+```
 ---- Brute Force Detection Report ----
 [ALERT] Possible Brute Force from 192.168.1.10 | Attempts: 5
-
-
+```
