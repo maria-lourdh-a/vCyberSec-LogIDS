@@ -14,8 +14,11 @@ with open(LOG_FILE, "r") as file:
                 ip = ip_match.group(1)
                 failed_attempts[ip] += 1
 
+import datetime
+
 print("---- Brute Force Detection Report ----\n")
 
 for ip, count in failed_attempts.items():
     if count >= THRESHOLD:
-        print(f"[ALERT] Possible Brute Force from {ip} | Attempts: {count}")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[{timestamp}] ALERT: Possible Brute Force from {ip} | Attempts: {count}")
