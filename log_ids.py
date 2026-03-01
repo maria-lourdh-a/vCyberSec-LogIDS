@@ -18,7 +18,11 @@ import datetime
 
 print("---- Brute Force Detection Report ----\n")
 
-for ip, count in failed_attempts.items():
-    if count >= THRESHOLD:
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"[{timestamp}] ALERT: Possible Brute Force from {ip} | Attempts: {count}")
+with open("alerts.log", "a") as alert_file:
+    for ip, count in failed_attempts.items():
+        if count >= THRESHOLD:
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            alert_message = f"[{timestamp}] ALERT: Possible Brute Force from {ip} | Attempts: {count}"
+            
+            print(alert_message)
+            alert_file.write(alert_message + "\n")
